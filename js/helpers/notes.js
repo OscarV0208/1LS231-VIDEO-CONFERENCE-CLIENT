@@ -7,37 +7,13 @@ class NotesHelper {
   
   static delete(noteId) {
       return DatabaseHelper.deleteNote(noteId);
-
-
   }
 
-
   static getList(roomCode) {
-      return [
-          {
-              "sender": {
-                "name": "XYZ",
-                "picture": "images/avatar.jpeg"
-              },
-              "content": {
-                "message": "XYZ",
-                "color": "#000"
-              }
-          },
-          {
-              "sender": {
-                "name": "XYZ",
-                "picture": "images/avatar.jpeg"
-              },
-              "content": {
-                "message": "XYZ",
-                "color": "#000"
-              }
-          }
-      ];
+      return DatabaseHelper.getNotes(roomCode);
   }
 
   static edit(note) {
-    return DatabaseHelper.editNote(note)
+    return DatabaseHelper.editNote(note);
   }
 }

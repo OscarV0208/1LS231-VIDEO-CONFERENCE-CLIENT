@@ -72,7 +72,7 @@ const App = {
       (stream) => {
           this.streamList = this.streamList.filter(x => x.streamId != stream.streamId);
       }
-  );
+    );
   },
   async sendMessage() {
     await this.sendChat({
@@ -89,6 +89,21 @@ const App = {
       }
       await AblyHelper.send(chat);
   },
+
+  async leaveConversation(showAlert) {
+    if (showAlert) {
+        const confirmLeave = confirm("Estás seguro que deseas abandonar la conversacion?");
+        if (!confirmLeave) return;
+    }
+
+    await this.CallActions.leaveConversation();
+    this.files = [];
+    this.chats = [];
+    this.notes = [];
+    this.room = null;
+    this.userName = null;
+},
+
   toggleAudio() {
     ApiRTCHelper.toggleAudio();
   },
