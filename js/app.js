@@ -34,6 +34,8 @@ const App = {
      // Inicializacion del arreglo notes con el resultado de getList de NotesHelper
      this.notes = NotesHelper.getList(this.room);
 
+      // Inicializar chats con el resultado del método getChats de DataBaseHelper
+     this.chats = DataBaseHelper.getChats(this.room);
 
     await AblyHelper.connect(this.room, (message) => {
       console.log("Received a message in realtime: " + message.data);
